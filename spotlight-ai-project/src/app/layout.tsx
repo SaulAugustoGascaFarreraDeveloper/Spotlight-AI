@@ -3,6 +3,7 @@ import {Manrope } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/sonner";
 
 const  manrope = Manrope({
   subsets:['latin'],
@@ -34,7 +35,7 @@ export default function RootLayout({
             >
                   {children}
             </ThemeProvider>
-          
+            <Toaster />
           </body>
         </html>
     </ClerkProvider>

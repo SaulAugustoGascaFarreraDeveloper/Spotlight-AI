@@ -5,6 +5,9 @@ import { useWebinarStore } from '@/store/useWebinarStore'
 import React, { useState } from 'react'
 import MultiStepForm from './multi-step-form'
 import BasicInfoStep from './basic-info-step'
+import { id } from 'date-fns/locale'
+import CTAStep from './cta-step'
+import AdditionalInfoStep from './additional-info-step'
 
 
 type CreateWebinatButtonProps = {
@@ -18,12 +21,30 @@ const CreateWebinatButton = () => {
 
     const [webinarLink,setWebinarLink] = useState<string>("")
 
-    const steps = [{
-        id: 'basicInfo',
-        title: 'Basic Information',
-        description: 'Please fill out the standard info needed for your webinar',
-        component: <BasicInfoStep />
-    }]
+    const steps = [
+        {
+            id: 'basicInfo',
+            title: 'Basic Information',
+            description: 'Please fill out the standard info needed for your webinar',
+            component: <BasicInfoStep />
+        },
+        {
+            id:'cta',
+            title:'CTA',
+            description:'Please provide the end-point for your customers through your webinar',
+            component: <CTAStep 
+                assistants={[]}
+                stripeProducts={[]}
+            />
+        },
+        {
+             id:'additionalInfo',
+             title:'Additional information',
+             description:'Please fill out information about additional options if is necessary',
+             component: <AdditionalInfoStep />
+        }
+
+    ]
 
     const handleComplete = (webinarId: string) => {
         console.log(webinarId)

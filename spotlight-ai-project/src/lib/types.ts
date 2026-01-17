@@ -1,4 +1,4 @@
-import { CtaTypeEnum } from "@prisma/client"
+import { Attendee, CtaTypeEnum } from "@prisma/client"
 import { ReactNode } from "react"
 
 export type Steps = {
@@ -136,7 +136,10 @@ export const validateAdditionalInfo = (data: {
   }
 }
 
-
+export type AttendanceData = {
+    count: number
+    users: Attendee[]
+}
 
 
 export type WebinarStatus = "upcoming" | "live" | "ended"

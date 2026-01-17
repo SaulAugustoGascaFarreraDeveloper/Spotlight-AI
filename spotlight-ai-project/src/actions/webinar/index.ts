@@ -119,3 +119,34 @@ function combineDateTime(date:Date,timeStr:string,timeFormat: 'AM' | 'PM') : Dat
     return result
 
 }
+
+export const getWebinarByPresenterId = async (presenterId: string) => {
+
+    try{
+
+        const webinars = await prismaClient.webinar.findMany({
+            where:{
+                presenterId: presenterId
+            },
+            include:{
+                presenter:{
+                    select:{
+                        name: true,
+                        stripeCustomerId: true,
+                        id: true
+                    }
+                }
+            }
+        })
+
+        return webinars
+
+    }catch(error){
+
+        console.log('Get Webinar By Presenter Id Error --> ',error)
+
+        return []
+
+    }
+
+}

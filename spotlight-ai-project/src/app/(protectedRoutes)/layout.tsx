@@ -22,7 +22,10 @@ const Layout = async ({children}:{children: ReactNode}) => {
             scrollbar-hide container mx-auto">
                 {/*HEADER*/}
                 <Header user={userExist.user} />
-                {children}
+                <div className="flex py-1">
+                          {children}
+                </div>
+              
             </div>
            
         </div>
